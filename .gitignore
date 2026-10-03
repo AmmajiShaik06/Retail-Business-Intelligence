@@ -1,4 +1,5 @@
 venv/
+.venv/
 __pycache__/
 *.pyc
 .env
@@ -20,3 +21,4 @@ __pycache__/
 *.pyo
 # Large raw datasets
 data/raw/
+dashboards.pbix
