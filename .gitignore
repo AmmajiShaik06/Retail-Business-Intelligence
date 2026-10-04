@@ -8,7 +8,8 @@ __pycache__/
 
 # Jupyter generated files
 *.html
-
+!app/templates/dashboard.html
+!app/templates/login.html
 # Database files
 *.db
 *.sqlite
