@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from pathlib import Path
 import pandas as pd
 
@@ -164,19 +164,15 @@ def upload_page():
                 "filename": filename
             }, 400
 
-        return {
-            "status": "success",
-            "message": (
-                "Sales CSV uploaded, validated, "
-                "and loaded into MySQL successfully."
-            ),
-            "dataset": dataset,
-            "filename": filename,
-            "uploaded_rows": result["uploaded_rows"],
-            "inserted_rows": result["inserted_rows"],
-            "total_sales_rows": result["total_rows_after"],
-            "path": str(save_path)
-        }
+        flash(
+            "Sales CSV uploaded successfully. Dashboard data has been updated.",
+            "success"
+        )
+
+        return redirect(
+            url_for("dashboard"),
+            code=303
+        )
 
     # ========================================================
     # OTHER DATASETS

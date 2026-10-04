@@ -39,6 +39,15 @@
     .container {
         padding: 30px;
     }
+    .upload-success {
+        background-color: #d4edda;
+        color: #155724;
+        padding: 14px 18px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-weight: bold;
+        border: 1px solid #c3e6cb;
+    }
 
     .welcome {
         background: white;
@@ -99,13 +108,27 @@
         <h1>Retail Business Intelligence Platform</h1>
         <span id="navbar-user">Loading...</span>
     </div>
+    <div>
+            <button onclick="window.location.href='/upload/'">
+                Upload Sales CSV
+            </button>
 
-    <button onclick="logoutUser()">
-        Logout
-    </button>
+            <button onclick="logoutUser()">
+                Logout
+            </button>
+        </div>
 </div>
 
 <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="upload-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 
     <div class="welcome">
         <h2>Welcome to the Dashboard</h2>
