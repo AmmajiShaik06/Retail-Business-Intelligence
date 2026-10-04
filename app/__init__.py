@@ -6,6 +6,7 @@ import pandas as pd
 import os
 from app.routes.api import api
 from app.routes.auth import auth
+from app.routes.upload import upload
 from app.auth import login_required
 load_dotenv()
 
@@ -442,4 +443,5 @@ def create_app():
     #         }, 500
     app.register_blueprint(api)
     app.register_blueprint(auth)
+    app.register_blueprint(upload)
     return app

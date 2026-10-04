@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSV Upload - Retail Business Intelligence</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .description {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        select,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            background: #333;
+            color: white;
+            font-size: 15px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .warning {
+            margin-top: 25px;
+            padding: 12px;
+            background: #fff3cd;
+            border-radius: 6px;
+            color: #664d03;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>CSV Data Upload</h1>
+
+    <p class="description">
+        Upload a CSV dataset for validation and ETL processing.
+    </p>
+
+    <form method="POST"
+          action="/upload/"
+          enctype="multipart/form-data">
+
+        <label for="dataset">
+            Select Dataset
+        </label>
+
+        <select id="dataset" name="dataset" required>
+
+            <option value="">
+                -- Select Dataset --
+            </option>
+
+            <option value="sales">
+                Sales
+            </option>
+
+            <option value="purchases">
+                Purchases
+            </option>
+
+            <option value="begin_inventory">
+                Begin Inventory
+            </option>
+
+            <option value="end_inventory">
+                End Inventory
+            </option>
+
+            <option value="purchase_prices">
+                Purchase Prices
+            </option>
+
+            <option value="vendor_invoice">
+                Vendor Invoice
+            </option>
+
+        </select>
+
+
+        <label for="file">
+            Select CSV File
+        </label>
+
+        <input
+            type="file"
+            id="file"
+            name="file"
+            accept=".csv"
+            required
+        >
+
+
+        <button type="submit">
+            Upload & Validate
+        </button>
+
+    </form>
+
+
+    <div class="warning">
+        <strong>Important:</strong>
+        Uploaded files will be validated before any ETL or database operation.
+        Existing project data will not be overwritten automatically.
+    </div>
+
+</div>
+
+</body>
+</html>

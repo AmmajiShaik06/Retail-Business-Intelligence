@@ -23,3 +23,8 @@ __pycache__/
 # Large raw datasets
 data/raw/
 dashboards.pbix
+
+# User uploaded files
+data/uploads/
+
+!app/templates/upload.html
